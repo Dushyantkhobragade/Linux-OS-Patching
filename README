@@ -6,4 +6,4 @@
 
 From Ansible master server, I am using root to execute it.
 
-# ansible-playbook OS_Patching.yaml
+# ansible-playbook OS_Patching.yaml -i <<Inventory_file>>
