@@ -4,3 +4,6 @@
 1. Create Inventory file with required groups to target specific client machine
 2. Review Patching yaml playbook and update wherever needed based on the enviroment or requirement.
 
+From Ansible master server, I am using root to execute it.
+
+# ansible-playbook OS_Patching.yaml
