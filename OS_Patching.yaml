@@ -28,6 +28,7 @@
         async: 0
         poll: 0
         when: reboot_clearance.stdout == "Server_Does_Needs_Reboot"
+        register: reboot_started
         ignore_errors: true
 
       - name: Waiting till Server come up after reboot
@@ -37,9 +38,9 @@
       - name: Check the Client status if it is avaialble for ssh
         local_action:
           module: wait_for
-            host={{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}
+            host={{ inventory_hostname }}
             port=22
-            search_regex=OpenSSH
             delay=15
             timeout=300
             state=started
+        when: reboot_started| changed
